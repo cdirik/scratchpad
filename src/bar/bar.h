@@ -1,13 +1,13 @@
 #pragma once
 
-#include<string>
+#include <string>
 
-class foo
+class bar
 {
 public:
-    foo(std::string name);
+    bar(std::string name);
 
-    virtual ~foo();
+    virtual ~bar();
 
     virtual void speak();
 

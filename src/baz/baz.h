@@ -2,12 +2,14 @@
 
 #include<string>
 
-class foo
+#include "foo.h"
+
+class baz : public foo
 {
 public:
-    foo(std::string name);
+    baz(std::string);
 
-    virtual ~foo();
+    virtual ~baz();
 
     virtual void speak();
 

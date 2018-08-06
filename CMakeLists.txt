@@ -10,15 +10,25 @@ add_executable(hello_world hello_world.cpp)
 
 # Here is a shared library
 include_directories(src/foo)
+include_directories(src/bar)
+include_directories(src/baz)
 
 # Can manually add source files using set command as in:
 # set(FOO_SOURCES src/foo/foo.cpp)
 # Or we can use the file(GLOB...) as in:
-file(GLOB FOO_SOURCES "src/foo/*.cpp")
+file(GLOB SOURCES "src/foo/*.cpp" "src/bar/*.cpp" "src/baz/*.cpp")
 
 # Generate shared library from sources
-add_library(foo SHARED ${FOO_SOURCES})
+add_library(scratchpad_lib SHARED ${SOURCES})
 
 # Here is another executable using shared library
 add_executable(test_foo test_foo.cpp)
-target_link_libraries(test_foo foo)
+target_link_libraries(test_foo scratchpad_lib)
+
+# Here is another executable using shared library
+add_executable(test_bar test_bar.cpp)
+target_link_libraries(test_bar scratchpad_lib)
+
+# Here is another executable using shared library
+add_executable(test_foo_bar_baz test_foo_bar_baz.cpp)
+target_link_libraries(test_foo_bar_baz scratchpad_lib)
